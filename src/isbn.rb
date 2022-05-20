@@ -53,4 +53,11 @@ module ISBN
 
     return_as_number ? check_digit : check_digit.to_s
   end
+
+  def self.is_valid? value
+    value = ISBN.ensure_correctness_input value
+    check_digit = ISBN.get_check_digit value
+
+    value[12] == check_digit
+  end
 end

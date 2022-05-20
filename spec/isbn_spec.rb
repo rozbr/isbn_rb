@@ -45,4 +45,22 @@ describe ISBN do
       expect(ISBN.get_check_digit 748174308791).to eq "7"
     end
   end
+
+  describe "is_valid?," do
+    it "should return true when passing 7481743087917" do
+      expect(ISBN.is_valid? 7481743087917).to be true
+    end
+
+    it "should return false when passing 7481743087918" do
+      expect(ISBN.is_valid? 7481743087918).to be false
+    end
+
+    it "should return false when passing '012345678901'" do
+      expect(ISBN.is_valid? '012345678901').to be false
+    end
+
+    it "should return true when passing '9780143007234'" do
+      expect(ISBN.is_valid? '9780143007234').to be true
+    end
+  end
 end
