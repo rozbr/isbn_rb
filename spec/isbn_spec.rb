@@ -31,4 +31,18 @@ describe ISBN do
       end
     end
   end
+
+  describe "get_check_digit," do
+    it "should return '3' when passing '978212345680'" do
+      expect(ISBN.get_check_digit "978212345680").to eq "3"
+    end
+
+    it "should return 4 when passing '978014300723'" do
+      expect(ISBN.get_check_digit "978014300723", true).to eq 4
+    end
+
+    it "should return '7' when passing 748174308791" do
+      expect(ISBN.get_check_digit 748174308791).to eq "7"
+    end
+  end
 end

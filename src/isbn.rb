@@ -39,4 +39,18 @@ module ISBN
 
     value
   end
+
+  def self.get_check_digit value, return_as_number=false
+    sum = 0
+    value = ISBN.ensure_correctness_input value
+
+    12.times do |index|
+      sum += value[index].to_i * (index.odd? ? 3 : 1)
+    end
+
+    check_digit = 10 - sum % 10
+    check_digit = check_digit % 10
+
+    return_as_number ? check_digit : check_digit.to_s
+  end
 end
